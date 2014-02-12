@@ -53,6 +53,14 @@ namespace JFTP.Modules
 
             // GET: /token/25/13
             Get["/token/{Token}/{Chunks}/{ChunkNumber}"] = _ => GetFileByChunk(this.Bind<ChunkRequest>());
+
+            Get["/exception"] = _ =>
+            {
+                _log.Error("Why would you call this method? Goober.");
+                return Negotiate
+                    .WithStatusCode(HttpStatusCode.EnhanceYourCalm)
+                    .WithView("Error");
+            };
         }
 	    #endregion
 
