@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JFTP", "JFTP\JFTP.csproj", "{537E2C3A-82B8-44E1-833F-FF4A8508C362}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JFTP.Lib", "JFTP.Lib\JFTP.Lib.csproj", "{E912BADB-A94F-4F5D-B4C6-478FCC987568}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{537E2C3A-82B8-44E1-833F-FF4A8508C362}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{537E2C3A-82B8-44E1-833F-FF4A8508C362}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{537E2C3A-82B8-44E1-833F-FF4A8508C362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E912BADB-A94F-4F5D-B4C6-478FCC987568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E912BADB-A94F-4F5D-B4C6-478FCC987568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E912BADB-A94F-4F5D-B4C6-478FCC987568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E912BADB-A94F-4F5D-B4C6-478FCC987568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

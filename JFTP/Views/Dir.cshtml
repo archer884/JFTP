@@ -1,0 +1,25 @@
+﻿@using JFTP.WebExtensions
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<JFTP.Lib.JDirectory>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h1>Directory listing</h1>
+    <h2>@Model.Path</h2>
+
+    <ul>
+        @foreach (var directory in @Model.Directories)
+        {
+            <li><strong>@directory.Name</strong></li>
+        }
+        @foreach (var file in @Model.Files)
+        {
+            <li>@file.DownloadLink()</li>
+        }
+    </ul>
+</body>
+</html>

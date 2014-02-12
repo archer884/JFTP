@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,16 @@ namespace JFTP.Lib
 {
     public class JDirectory
     {
+        private DirectoryInfo _info;
+
         public string Path { get; set; }
+        public string Name
+        {
+            get
+            {
+                return (_info ?? (_info = new DirectoryInfo(Path))).Name;
+            }
+        }
 
         public IEnumerable<JDirectory> Directories { get; set; }
         public IEnumerable<JFile> Files { get; set; }
