@@ -3216,7 +3216,7 @@
         <member name="P:Nancy.Json.JsonSettings.RetainCasing">
             <summary>
             Set to true to retain the casing used in the C# code in produced JSON.
-            Set to false to use camelCasig in the produced JSON.
+            Set to false to use camelCasing in the produced JSON.
             False by default.
             </summary>
         </member>
@@ -3258,6 +3258,13 @@
             Gets the list of extensions that the serializer can handle.
             </summary>
             <value>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of extensions if any are available, otherwise an empty enumerable.</value>
+        </member>
+        <member name="P:Nancy.Responses.DefaultJsonSerializer.RetainCasing">
+            <summary>
+            Set to true to retain the casing used in the C# code in produced JSON.
+            Set to false to use camelCasig in the produced JSON.
+            False by default.
+            </summary>
         </member>
         <member name="M:Nancy.Responses.DefaultXmlSerializer.CanSerialize(System.String)">
             <summary>
@@ -5712,6 +5719,20 @@
             <param name="queryString">The query string to extract values from</param>
             <returns>A dynamic dictionary containing the query string values</returns>
         </member>
+        <member name="M:Nancy.Extensions.StringExtensions.ToCamelCase(System.String)">
+            <summary>
+            Converts the value from PascalCase to camelCase.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Nancy.Extensions.StringExtensions.ToPascalCase(System.String)">
+            <summary>
+            Converts the value from camelCase to PascalCase.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
         <member name="T:Nancy.RequestHeaders">
             <summary>
             Provides strongly-typed access to HTTP request headers.
@@ -6747,6 +6768,12 @@
             <param name="error">The <see cref="T:Nancy.Validation.ModelValidationError"/> that should be cast.</param>
             <returns>A <see cref="T:System.String"/> containing the validation error description.</returns>
         </member>
+        <member name="M:Nancy.Validation.ModelValidationError.ToString">
+            <summary>
+            Returns the <see cref="P:Nancy.Validation.ModelValidationError.ErrorMessage"/>.
+            </summary>
+            <returns>A string containing the error message.</returns>
+        </member>
         <member name="P:Nancy.Validation.ModelValidationError.MemberNames">
             <summary>
             Gets the member names that are a part of the error.
@@ -6763,10 +6790,9 @@
             Represents the result of a model validation.
             </summary>
         </member>
-        <member name="F:Nancy.Validation.ModelValidationResult.Valid">
+        <member name="M:Nancy.Validation.ModelValidationResult.#ctor">
             <summary>
-            Represents an instance of the <see cref="T:Nancy.Validation.ModelValidationResult"/> type that will
-            return <see langword="true"/> when <see cref="P:Nancy.Validation.ModelValidationResult.IsValid"/> is queried.
+            Initializes a new instance of the <see cref="T:Nancy.Validation.ModelValidationResult"/> class.
             </summary>
         </member>
         <member name="M:Nancy.Validation.ModelValidationResult.#ctor(System.Collections.Generic.IEnumerable{Nancy.Validation.ModelValidationError})">

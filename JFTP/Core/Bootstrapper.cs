@@ -1,24 +1,37 @@
-﻿using Nancy;
+﻿using Castle.Windsor;
+using Nancy;
+using Nancy.Bootstrappers.Windsor;
 using Nancy.Authentication.Forms;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
-using Nancy.TinyIoc;
+using Nancy.Diagnostics;
+using System.Collections.Generic;
+using Castle.MicroKernel.Registration;
 
 namespace JFTP.Core
 {
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public class Bootstrapper : WindsorNancyBootstrapper
     {
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        protected override void ConfigureApplicationContainer(IWindsorContainer container)
         {
+            base.ConfigureApplicationContainer(container);
+
+            // Autoregister everything and set up the user mapper
+            // as a singleton instance shared across everything.
+            //container.Register(Classes.FromThisAssembly()
+            //    .Pick().LifestyleScoped<NancyPerWebRequestScopeAccessor>()
+            //    .ConfigureFor<IUserMapper>(cfg => cfg.LifestyleSingleton()));
+            /*
+             * This bullshit doesn't work and God Almighty may or may not know why.
+             * */
+
+            container.Register(Component.For<IUserMapper>().ImplementedBy<UserMapper>());
+            /*
+             * This, on the other hand, works perfectly.
+             * */
         }
 
-        protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
-        {
-            base.ConfigureRequestContainer(container, context);
-            container.Register<IUserMapper, UserMapper>();
-        }
-
-        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
+        protected override void RequestStartup(IWindsorContainer container, IPipelines pipelines, NancyContext context)
         {
             FormsAuthentication.Enable(pipelines, new FormsAuthenticationConfiguration()
             {
